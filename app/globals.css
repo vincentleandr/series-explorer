@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.search-result-container:hover .search-result-hover-target {
+  transform: scale(1.04);
+  transition: all ease 0.5s;
+}
