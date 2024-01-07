@@ -75,7 +75,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="w-10/12 p-10 flex flex-col items-center">
+      <div className="w-10/12 p-4 lg:p-10 flex flex-col items-center">
         {searchBar}
         <div className="flex justify-center items-center flex-wrap">
           {mappedSearchResult}

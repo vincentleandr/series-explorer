@@ -21,17 +21,17 @@ export default async function Details({ params }: { params: { id: string } }) {
         width={400}
         height={400}
         alt={data.name}
-        className="rounded-xl search-result-hover-target"
+        className="rounded-xl search-result-hover-target w-20 h-32 lg:w-96 lg:h-auto"
       />
     ) : (
-      <div className="w-40 h-56 bg-gray-600 rounded-xl search-result-hover-target" />
+      <div className="w-40 h-56 bg-gray-600 rounded-xl search-result-hover-target w-20 h-32 lg:w-96 lg:h-auto" />
     );
 
     const seriesRating = data.rating?.average && <p className='mt-4'>Rating: {data.rating.average} / 10</p>
 
     return (
       <div className='flex justify-center items-center'>
-        <div className="w-10/12 p-10 flex">
+        <div className="w-10/12 p-4 lg:p-10 flex">
           {seriesImage}
           <div className='flex flex-col ml-10'>
             <h1 className='text-3xl font-bold'>{data.name}</h1>
