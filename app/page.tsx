@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from 'next/image'
 import { useState } from "react";
+import Loader from "./Loader";
 
 async function searchSeries(searchInput: string) {
   const res = await fetch(`https://api.tvmaze.com/search/shows?q=${searchInput}`)
@@ -18,6 +19,7 @@ async function searchSeries(searchInput: string) {
 export default function Home() {
   const [searchInput, setSearchInput] = useState<string>('');
   const [searchResult, setSearchResult] = useState<SearchSeriesResult[]>([]);
+  const [isSearching, setIsSearching] = useState<boolean>(false);
 
   const mappedSearchResult = searchResult.map((item: SearchSeriesResult) => {
     const seriesImage = item.show.image ? (
@@ -48,8 +50,10 @@ export default function Home() {
 
   const onSearch = async (e: any) => {
     e.preventDefault();
+    setIsSearching(true);
     const data: SearchSeriesResult[] = await searchSeries(searchInput);
     setSearchResult(data);
+    setIsSearching(false);
   };
 
   const searchBar = (
@@ -73,12 +77,14 @@ export default function Home() {
     </div>
   );
 
+  const searchResultContent = isSearching ? <Loader /> : mappedSearchResult;
+
   return (
     <div className="flex justify-center items-center">
       <div className="w-10/12 p-4 lg:p-10 flex flex-col items-center">
         {searchBar}
-        <div className="flex justify-center items-center flex-wrap">
-          {mappedSearchResult}
+        <div className="flex justify-center items-center flex-wrap mt-10">
+          {searchResultContent}
         </div>
       </div>
     </div>

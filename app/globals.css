@@ -30,3 +30,28 @@ body {
   transform: scale(1.04);
   transition: all ease 0.5s;
 }
+
+.loader-ring {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 7px dashed #4b9cdb;
+  border-radius: 100%;
+}
+
+.loader .loader-ring {
+  animation: spin 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
